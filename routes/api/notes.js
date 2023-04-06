@@ -4,10 +4,12 @@ const router = express.Router();
 const notesCtrl = require('../../controllers/api/notes');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
-router.post('/create', ensureLoggedIn, notesCtrl.create);
 
-router.get('/', ensureLoggedIn, notesCtrl.allNotes);
+// All paths start with '/api/notes'
+router.post('/', ensureLoggedIn, notesCtrl.create);
 
-router.delete('/delete/:id', ensureLoggedIn, notesCtrl.deleteNote);
+// POST /api/notes (create a user - sign up)
+router.get('/', notesCtrl.index)
+
 
 module.exports = router;

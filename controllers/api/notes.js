@@ -1,25 +1,28 @@
+
 const Note = require('../../models/note');
 
 module.exports = {
-  create,
-  allNotes,
-  deleteNote
-}
+    create,
+    index
+  };
 
 async function create(req, res) {
-  req.body.user = req.user;
-  const note = await Note.create(req.body);
-  console.log(note);
-  res.json(note);
+  try{
+    req.body.user = req.user._id;
+    const createdNote = await Note.create(req.body);
+    res.json(req.body);
+  }  catch(err) {
+    console.log(err);
+    res.status(400).json(err);
+    } 
 }
 
-async function allNotes(req, res) {
-  const notes = await Note.find({user: req.user._id});
-  res.json(notes);
-}
-
-async function deleteNote(req, res) {
-  await Note.findByIdAndDelete(req.params.id);
-  const notes = await Note.find({user: req.user._id});
-  res.json(notes);
+async function index(req, res) {
+  try{
+    const allNotes = await Note.find({});
+    res.json(allNotes)
+  }  catch(err) {
+    console.log(err);
+    res.status(400).json(err);
+    } 
 }
