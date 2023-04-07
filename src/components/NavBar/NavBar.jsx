@@ -13,7 +13,7 @@ export default function NavBar({ user, setUser }) {
       &nbsp; | &nbsp;
       <Link to="/notes/new">Add a Note</Link>
       &nbsp; | &nbsp;
-      <Link to="/">View all Notes</Link>
+      <Link to="/notes">View all Notes</Link>
       &nbsp;&nbsp;
       &nbsp;&nbsp;<Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>

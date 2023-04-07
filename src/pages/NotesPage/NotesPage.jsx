@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as notesService from '../../utilities/notes-service';
 
+
 export default function NotesPage({ user, setUser }) {
   const [notes, setNotes] = useState([]);
 
@@ -11,7 +12,7 @@ export default function NotesPage({ user, setUser }) {
     }
     getNotes();
   }, []);
-
+    console.log('money')
   return (
     <>
       <h1>Notes Page</h1>

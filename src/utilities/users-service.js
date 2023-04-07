@@ -3,6 +3,7 @@
 // Service modules often depend upon API modules
 // for making AJAX requests to the server.
 
+
 import * as usersAPI from './users-api';
 
 export async function signUp(userData) {
@@ -12,8 +13,6 @@ export async function signUp(userData) {
 }
 
 export async function login(credentials) {
-  // Delegate the AJAX request to the users-api.js
-  // module.
   const token = await usersAPI.login(credentials);
   localStorage.setItem('token', token);
   return getUser();
@@ -22,6 +21,7 @@ export async function login(credentials) {
 export function logOut() {
   localStorage.removeItem('token');
 }
+
 
 export function getToken() {
   // getItem will return null if the key does not exists
@@ -43,7 +43,8 @@ export function getUser() {
 }
 
 export function checkToken() {
-  // We can't forget how to use .then with promises
   return usersAPI.checkToken()
-    .then(dateStr => new Date(dateStr));
+  // checkToken returns a string, but let's 
+  // make it a Date object for more flexibility
+  .then(dateStr => new Date(dateStr));
 }

@@ -9,7 +9,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 router.post('/', ensureLoggedIn, notesCtrl.create);
 
 // POST /api/notes (create a user - sign up)
-router.get('/', notesCtrl.index)
+router.get('/', notesCtrl.index);
 
 
 module.exports = router;

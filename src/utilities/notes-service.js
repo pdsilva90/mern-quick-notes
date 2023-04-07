@@ -5,6 +5,7 @@ export async function getAllNotes() {
   // const token = await usersAPI.signUp(userData);
   // localStorage.setItem('token', token);
   // return getUser();
+  console.log('word')
   const allNote = await notesAPI.getNotesRequest();
   return allNote;
 }
